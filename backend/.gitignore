@@ -1,0 +1,10 @@
+.vscode/
+
+venv
+.venv 
+
+
+__pycache__/
+
+
+opencode.json

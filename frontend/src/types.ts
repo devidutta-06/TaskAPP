@@ -16,4 +16,5 @@ export type Task = {
 
 export type TaskModalOutletContext = {
   openEditTask: (task: Task) => void
+  openCreateTask: (dueDate?: string) => void
 }

@@ -6,6 +6,7 @@ import { todayISO } from '../utils/date'
 
 type TaskModalProps = {
   task?: Task
+  defaultDueDate?: string
   onClose: () => void
 }
 
@@ -13,7 +14,7 @@ const labelClass = 'mb-1.5 block text-sm font-medium text-gray-700'
 const fieldClass =
   'w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
 
-function TaskModal({ task, onClose }: TaskModalProps) {
+function TaskModal({ task, defaultDueDate, onClose }: TaskModalProps) {
   const { addTask, updateTask } = useTasks()
   const isEdit = Boolean(task)
 
@@ -21,7 +22,7 @@ function TaskModal({ task, onClose }: TaskModalProps) {
   const [description, setDescription] = useState(task?.description ?? '')
   const [priority, setPriority] = useState<Priority>(task?.priority ?? 'Medium')
   const [status, setStatus] = useState<Status>(task?.status ?? 'Not Started')
-  const [dueDate, setDueDate] = useState(task?.dueDate ?? todayISO())
+  const [dueDate, setDueDate] = useState(task?.dueDate ?? defaultDueDate ?? todayISO())
   const [error, setError] = useState<string>()
 
   useEffect(() => {

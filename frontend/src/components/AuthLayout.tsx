@@ -49,7 +49,7 @@ function AuthLayout({ title, subtitle, children, footer }: AuthLayoutProps) {
         </div>
 
         <p className="relative text-sm text-blue-200">
-          © {new Date().getFullYear()} TaskApp. All rights reserved.
+          © 2026 TaskApp. All rights reserved.
         </p>
       </div>
 

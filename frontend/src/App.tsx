@@ -6,6 +6,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import Dashboard from './pages/Dashboard'
 import AllTasks from './pages/AllTasks'
 import TodayTasks from './pages/TodayTasks'
+import Calendar from './pages/Calendar'
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="all-tasks" element={<AllTasks />} />
             <Route path="today-tasks" element={<TodayTasks />} />
-            <Route path="calendar" element={<></>} />
+            <Route path="calendar" element={<Calendar />} />
           </Route>
           <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>

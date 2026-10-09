@@ -1,26 +1,31 @@
 import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import { Plus } from 'lucide-react'
 import Navbar from '../components/Navbar'
-import Sidebar, { type NavKey } from '../components/Sidebar'
-
-const PAGE_TITLES: Record<NavKey, string> = {
-  dashboard: 'Dashboard',
-  'all-tasks': 'All Tasks',
-  'today-tasks': "Today's Tasks",
-  calendar: 'Calendar',
-}
+import Sidebar from '../components/Sidebar'
+import TaskModal from '../components/TaskModal'
+import type { Task, TaskModalOutletContext } from '../types'
 
 function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [active, setActive] = useState<NavKey>('dashboard')
+  const [modalOpen, setModalOpen] = useState(false)
+  const [editingTask, setEditingTask] = useState<Task>()
+
+  const openEditTask = (task: Task) => {
+    setEditingTask(task)
+    setModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
+    setEditingTask(undefined)
+  }
+
+  const modalContext: TaskModalOutletContext = { openEditTask }
 
   return (
-    <div className="flex min-h-screen bg-gray-50 text-gray-900">
-      <Sidebar
-        active={active}
-        onNavigate={setActive}
-        open={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-100 text-gray-900">
+      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex min-w-0 flex-1 flex-col">
         <Navbar
@@ -29,14 +34,20 @@ function Dashboard() {
         />
 
         <main className="flex-1 p-4 sm:p-6">
-          <h1 className="text-xl font-semibold text-gray-900">
-            {PAGE_TITLES[active]}
-          </h1>
-          <div className="mt-4 rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center text-sm text-gray-500">
-            {PAGE_TITLES[active]} content goes here
-          </div>
+          <Outlet context={modalContext} />
         </main>
       </div>
+
+      <button
+        type="button"
+        onClick={() => setModalOpen(true)}
+        aria-label="Create task"
+        className="fixed bottom-6 right-6 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg shadow-blue-600/30 transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/30"
+      >
+        <Plus className="h-6 w-6" />
+      </button>
+
+      {modalOpen && <TaskModal task={editingTask} onClose={closeModal} />}
     </div>
   )
 }

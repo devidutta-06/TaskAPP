@@ -1,0 +1,68 @@
+import type { Task } from '../types'
+import { addDaysISO, todayISO } from '../utils/date'
+
+export const dummyTasks: Task[] = [
+  {
+    id: 't1',
+    title: 'Design landing page hero',
+    description: 'Create a clean hero section with headline, CTA and product preview.',
+    priority: 'High',
+    status: 'Ongoing',
+    dueDate: todayISO(),
+    createdAt: addDaysISO(-6),
+  },
+  {
+    id: 't2',
+    title: 'Write project proposal',
+    description: 'Draft the scope, timeline and budget for the new client.',
+    priority: 'Medium',
+    status: 'Not Started',
+    dueDate: todayISO(),
+    createdAt: addDaysISO(-4),
+  },
+  {
+    id: 't3',
+    title: 'Team stand-up meeting',
+    description: 'Daily sync with the product team to unblock tasks.',
+    priority: 'Low',
+    status: 'Completed',
+    dueDate: todayISO(),
+    createdAt: addDaysISO(-3),
+  },
+  {
+    id: 't4',
+    title: 'Fix login validation',
+    description: 'Email field accepts invalid input on the signup form.',
+    priority: 'High',
+    status: 'Ongoing',
+    dueDate: addDaysISO(1),
+    createdAt: addDaysISO(-2),
+  },
+  {
+    id: 't5',
+    title: 'Update dependencies',
+    description: 'Bump React, Tailwind and Vite to their latest versions.',
+    priority: 'Medium',
+    status: 'Not Started',
+    dueDate: addDaysISO(3),
+    createdAt: addDaysISO(-2),
+  },
+  {
+    id: 't6',
+    title: 'Prepare demo video',
+    description: 'Record a two minute walkthrough of the app for the launch.',
+    priority: 'Low',
+    status: 'Not Started',
+    dueDate: addDaysISO(-1),
+    createdAt: addDaysISO(-1),
+  },
+  {
+    id: 't7',
+    title: 'Refactor task card',
+    description: 'Extract a reusable component and clean up the props.',
+    priority: 'Medium',
+    status: 'Completed',
+    dueDate: addDaysISO(-2),
+    createdAt: addDaysISO(-1),
+  },
+]

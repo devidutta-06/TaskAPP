@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import {
   CalendarDays,
   ClipboardList,
@@ -9,51 +10,49 @@ import {
   X,
 } from 'lucide-react'
 
-export type NavKey = 'dashboard' | 'all-tasks' | 'today-tasks' | 'calendar'
-
 type NavItem = {
-  key: NavKey
+  to: string
   label: string
   icon: LucideIcon
+  end?: boolean
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { key: 'all-tasks', label: 'All Tasks', icon: ClipboardList },
-  { key: 'today-tasks', label: "Today's Tasks", icon: ListChecks },
-  { key: 'calendar', label: 'Calendar', icon: CalendarDays },
+  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, end: true },
+  { to: '/dashboard/all-tasks', label: 'All Tasks', icon: ClipboardList },
+  { to: '/dashboard/today-tasks', label: "Today's Tasks", icon: ListChecks },
+  { to: '/dashboard/calendar', label: 'Calendar', icon: CalendarDays },
 ]
 
 type SidebarProps = {
-  active: NavKey
-  onNavigate: (key: NavKey) => void
   open?: boolean
   onClose?: () => void
 }
 
-function Sidebar({ active, onNavigate, open = false, onClose }: SidebarProps) {
-  const renderItems = (isMobile: boolean) =>
-    NAV_ITEMS.map(({ key, label, icon: Icon }) => {
-      const isActive = key === active
-      return (
-        <button
-          key={key}
-          type="button"
-          onClick={() => {
-            onNavigate(key)
-            if (isMobile) onClose?.()
-          }}
-          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
+function Sidebar({ open = false, onClose }: SidebarProps) {
+  const renderItems = () =>
+    NAV_ITEMS.map(({ to, label, icon: Icon, end }) => (
+      <NavLink
+        key={to}
+        to={to}
+        end={end}
+        onClick={() => onClose?.()}
+        className={({ isActive }) =>
+          `flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition ${
             isActive
-              ? 'bg-indigo-50 text-indigo-600'
+              ? 'bg-blue-50 text-blue-700'
               : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-          }`}
-        >
-          <Icon className={`h-5 w-5 ${isActive ? 'text-indigo-600' : 'text-gray-400'}`} />
-          {label}
-        </button>
-      )
-    })
+          }`
+        }
+      >
+        {({ isActive }) => (
+          <>
+            <Icon className={`h-5 w-5 ${isActive ? 'text-blue-600' : 'text-gray-400'}`} />
+            {label}
+          </>
+        )}
+      </NavLink>
+    ))
 
   return (
     <>
@@ -72,7 +71,7 @@ function Sidebar({ active, onNavigate, open = false, onClose }: SidebarProps) {
       >
         <div className="flex h-16 items-center justify-between border-b border-gray-200 px-5">
           <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500 text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white">
               <ListChecks className="h-5 w-5" />
             </span>
             <span className="text-lg font-semibold text-gray-900">TaskApp</span>
@@ -91,7 +90,7 @@ function Sidebar({ active, onNavigate, open = false, onClose }: SidebarProps) {
           <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
             Menu
           </p>
-          {renderItems(false)}
+          {renderItems()}
         </nav>
 
         <div className="space-y-1 border-t border-gray-200 px-3 py-4">
@@ -111,7 +110,6 @@ function Sidebar({ active, onNavigate, open = false, onClose }: SidebarProps) {
           </button>
         </div>
       </aside>
-
     </>
   )
 }

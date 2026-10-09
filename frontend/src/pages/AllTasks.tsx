@@ -29,9 +29,10 @@ function AllTasks() {
   return (
     <div>
       <div className="mb-4">
-        <h1 className="text-xl font-semibold text-gray-900">All Tasks</h1>
-        <p className="text-sm text-gray-500">
+        <h1 className="text-xl font-semibold text-gray-900 dark:text-slate-100">All Tasks</h1>
+        <p className="text-sm text-gray-500 dark:text-slate-400">
           Drag cards between columns to update their status.
+          Double click a card to edit it
         </p>
       </div>
 

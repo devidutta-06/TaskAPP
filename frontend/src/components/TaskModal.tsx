@@ -10,9 +10,9 @@ type TaskModalProps = {
   onClose: () => void
 }
 
-const labelClass = 'mb-1.5 block text-sm font-medium text-gray-700'
+const labelClass = 'mb-1.5 block text-sm font-medium text-gray-700 dark:text-slate-300'
 const fieldClass =
-  'w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20'
+  'w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-500'
 
 function TaskModal({ task, defaultDueDate, onClose }: TaskModalProps) {
   const { addTask, updateTask } = useTasks()
@@ -60,16 +60,16 @@ function TaskModal({ task, defaultDueDate, onClose }: TaskModalProps) {
     <div className="fixed inset-0 z-50 flex items-end justify-center p-4 sm:items-center">
       <div className="absolute inset-0 bg-black/40" onClick={onClose} aria-hidden="true" />
 
-      <div className="relative z-10 w-full max-w-lg rounded-2xl border border-white/60 bg-white p-6 shadow-2xl">
+      <div className="relative z-10 w-full max-w-lg rounded-2xl border border-white/60 bg-white p-6 shadow-2xl dark:border-slate-700 dark:bg-slate-800">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-slate-100">
             {isEdit ? 'Edit Task' : 'New Task'}
           </h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="rounded-lg p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700"
+            className="rounded-lg p-1.5 text-gray-500 transition hover:bg-gray-100 hover:text-gray-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-200"
           >
             <X className="h-5 w-5" />
           </button>
@@ -91,7 +91,7 @@ function TaskModal({ task, defaultDueDate, onClose }: TaskModalProps) {
               placeholder="e.g. Prepare weekly report"
               className={fieldClass}
             />
-            {error && <p className="mt-1.5 text-xs text-red-600">{error}</p>}
+            {error && <p className="mt-1.5 text-xs text-red-600 dark:text-red-400">{error}</p>}
           </div>
 
           <div>
@@ -164,7 +164,7 @@ function TaskModal({ task, defaultDueDate, onClose }: TaskModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-700"
             >
               Cancel
             </button>

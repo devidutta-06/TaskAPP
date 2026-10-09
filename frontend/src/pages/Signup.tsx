@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Lock, Mail, User } from 'lucide-react'
 import AuthLayout from '../components/AuthLayout'
 import TextInput from '../components/TextInput'
-import GoogleIcon from '../components/GoogleIcon'
+import googleLogo from '../assets/google-logo.svg'
 
 type FormErrors = {
   name?: string
@@ -105,19 +105,19 @@ function Signup() {
       </form>
 
       <div className="my-6 flex items-center gap-4">
-        <span className="h-px flex-1 bg-gray-200" />
-        <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
+        <span className="h-px flex-1 bg-gray-200 dark:bg-slate-700" />
+        <span className="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-slate-500">
           or sign up with
         </span>
-        <span className="h-px flex-1 bg-gray-200" />
+        <span className="h-px flex-1 bg-gray-200 dark:bg-slate-700" />
       </div>
 
       <button
         type="button"
         onClick={() => navigate('/dashboard')}
-        className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+        className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
       >
-        <GoogleIcon />
+        <img src={googleLogo} alt="" aria-hidden="true" className="h-4 w-4" />
         Sign up with Google
       </button>
     </AuthLayout>

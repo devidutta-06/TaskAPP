@@ -33,7 +33,7 @@ function Dashboard() {
   const modalContext: TaskModalOutletContext = { openEditTask, openCreateTask }
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-100 text-gray-900">
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-100 text-gray-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 dark:text-slate-100">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className="flex min-w-0 flex-1 flex-col">

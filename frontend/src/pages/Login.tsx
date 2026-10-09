@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Lock, Mail } from 'lucide-react'
 import AuthLayout from '../components/AuthLayout'
 import TextInput from '../components/TextInput'
-import GoogleIcon from '../components/GoogleIcon'
+import googleLogo from '../assets/google-logo.svg'
 
 function Login() {
   const navigate = useNavigate()
@@ -62,12 +62,12 @@ function Login() {
         />
 
         <div className="flex items-center justify-between text-sm">
-          <label className="flex cursor-pointer items-center gap-2 text-gray-600">
+          <label className="flex cursor-pointer items-center gap-2 text-gray-600 dark:text-slate-300">
             <input
               type="checkbox"
               checked={remember}
               onChange={(e) => setRemember(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-900"
             />
             Remember me
           </label>
@@ -88,19 +88,19 @@ function Login() {
       </form>
 
       <div className="my-6 flex items-center gap-4">
-        <span className="h-px flex-1 bg-gray-200" />
-        <span className="text-xs font-medium uppercase tracking-wide text-gray-400">
+        <span className="h-px flex-1 bg-gray-200 dark:bg-slate-700" />
+        <span className="text-xs font-medium uppercase tracking-wide text-gray-400 dark:text-slate-500">
           or continue with
         </span>
-        <span className="h-px flex-1 bg-gray-200" />
+        <span className="h-px flex-1 bg-gray-200 dark:bg-slate-700" />
       </div>
 
       <button
         type="button"
         onClick={() => navigate('/dashboard')}
-        className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+        className="flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
       >
-        <GoogleIcon />
+        <img src={googleLogo} alt="" aria-hidden="true" className="h-4 w-4" />
         Sign in with Google
       </button>
     </AuthLayout>

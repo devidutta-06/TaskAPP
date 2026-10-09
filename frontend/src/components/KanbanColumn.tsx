@@ -43,16 +43,16 @@ function KanbanColumn({
         setIsOver(false)
         onDropTask(status)
       }}
-      className={`flex flex-col rounded-2xl border border-white/60 bg-white/40 p-3 backdrop-blur-md transition ${
+      className={`flex flex-col rounded-2xl border border-white/60 bg-white/40 p-3 backdrop-blur-md transition dark:border-slate-700/60 dark:bg-slate-800/40 ${
         isOver ? 'border-blue-400 ring-2 ring-blue-200' : ''
       }`}
     >
       <header className="flex items-center justify-between px-1 pb-3">
         <div className="flex items-center gap-2">
           <span className={`h-2.5 w-2.5 rounded-full ${accent}`} />
-          <h2 className="text-sm font-semibold text-gray-700">{status}</h2>
+          <h2 className="text-sm font-semibold text-gray-700 dark:text-slate-200">{status}</h2>
         </div>
-        <span className="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-gray-500">
+        <span className="rounded-full bg-white px-2 py-0.5 text-xs font-medium text-gray-500 dark:bg-slate-700 dark:text-slate-300">
           {tasks.length}
         </span>
       </header>
@@ -73,7 +73,7 @@ function KanbanColumn({
           />
         ))}
         {tasks.length === 0 && (
-          <p className="rounded-lg border border-dashed border-gray-300 px-1 py-6 text-center text-xs text-gray-400">
+          <p className="rounded-lg border border-dashed border-gray-300 px-1 py-6 text-center text-xs text-gray-400 dark:border-slate-600 dark:text-slate-500">
             Drop tasks here
           </p>
         )}

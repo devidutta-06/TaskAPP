@@ -38,14 +38,16 @@ function ForgotPassword() {
       }
     >
       {sent ? (
-        <div className="rounded-xl border border-blue-100 bg-blue-50 p-6 text-center">
+        <div className="rounded-xl border border-blue-100 bg-blue-50 p-6 text-center dark:border-blue-500/30 dark:bg-blue-500/10">
           <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white">
             <CheckCircle2 className="h-6 w-6" />
           </span>
-          <h2 className="mt-4 text-base font-semibold text-gray-900">Check your email</h2>
-          <p className="mt-1.5 text-sm text-gray-600">
+          <h2 className="mt-4 text-base font-semibold text-gray-900 dark:text-slate-100">
+            Check your email
+          </h2>
+          <p className="mt-1.5 text-sm text-gray-600 dark:text-slate-300">
             We&apos;ve sent a password reset link to{' '}
-            <span className="font-medium text-gray-900">{email}</span>.
+            <span className="font-medium text-gray-900 dark:text-slate-100">{email}</span>.
           </p>
           <button
             type="button"

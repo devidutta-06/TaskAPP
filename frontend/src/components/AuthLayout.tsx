@@ -16,7 +16,7 @@ const FEATURES = [
 
 function AuthLayout({ title, subtitle, children, footer }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-white lg:grid lg:grid-cols-2">
+    <div className="min-h-screen bg-white dark:bg-slate-950 lg:grid lg:grid-cols-2">
       <div className="relative hidden overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-10 text-white lg:flex lg:flex-col lg:justify-between">
         <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/10" />
         <div className="absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-blue-400/20" />
@@ -58,16 +58,18 @@ function AuthLayout({ title, subtitle, children, footer }: AuthLayoutProps) {
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">
             <ListChecks className="h-5 w-5" />
           </span>
-          <span className="text-xl font-semibold text-gray-900">TaskApp</span>
+          <span className="text-xl font-semibold text-gray-900 dark:text-slate-100">TaskApp</span>
         </div>
 
         <div className="mx-auto w-full max-w-md">
-          <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
-          <p className="mt-1.5 text-sm text-gray-500">{subtitle}</p>
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-slate-100">{title}</h1>
+          <p className="mt-1.5 text-sm text-gray-500 dark:text-slate-400">{subtitle}</p>
 
           <div className="mt-8">{children}</div>
 
-          {footer && <div className="mt-6 text-center text-sm text-gray-500">{footer}</div>}
+          {footer && (
+            <div className="mt-6 text-center text-sm text-gray-500 dark:text-slate-400">{footer}</div>
+          )}
         </div>
       </div>
     </div>
